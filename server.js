@@ -35,7 +35,9 @@ app.get('/', isLogedIn, async(req, res) => {
   const userID = req.user.id;
   const user = await userModel.findOne({_id: userID}); 
   const {fullname, username, email} = user;
-  res.render('index', {fullname, username, email});
+
+  const allPosts = await postModel.find();
+  res.render('index', {fullname, username, email, allPosts});
 
 });
 
@@ -110,6 +112,49 @@ app.get('/logout', (req, res) => {
   res.clearCookie('token');
   res.redirect('/login');
 });
+
+app.post('/addpost', isLogedIn, async(req, res) => {
+
+  const { content } = req.body;
+  const {id,username} = req.user;
+
+  const post = await postModel.create({
+    content,
+    username, 
+    user: id
+  });
+
+  await userModel.updateOne({_id: id}, {$push: {posts: post._id}});
+
+  return res.redirect('/');
+
+});
+
+app.get('/u/:username', isLogedIn, async(req,res) => {
+  const username = req.params.username;
+  const user = await userModel.findOne({username});
+
+  if(user){
+    res.render('otherUserProfile', {user});
+  }else{
+    return res.send("No user found with this name")
+  }
+})
+
+app.get('/profile', isLogedIn, async(req,res) => {
+  const {id,username} = req.user;
+  const user = await userModel.findOne({_id:id});
+
+  if(user){
+    
+    const post = user.posts;
+    console.log(post)
+  
+    return res.render('profile', {user})
+  }else{
+    res.send("Something went wrong")
+  }
+})
 
 
 app.listen(3000);
