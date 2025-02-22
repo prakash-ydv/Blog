@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="flex justify-center bg-zinc-900 min-h-screen w-full p-10">
+
+        <div class="form-container flex flex-col py-10 px-6 border-[1px] border-zinc-500 rounded-md text-white max-w-lg items-center h-fit">
+
+            <h1 class="block font-bold uppercase mb-10 text-2xl">Register Now</h1>
+
+            <form class="text-sm flex flex-col items-center" action="/register" method="post">
+    
+                <!-- Full Name (Only letters, spaces allowed, min 3 characters) -->
+                <input class="bg-none w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="text" placeholder="Full Name" name="fullname" 
+                    pattern="^[a-zA-Z ]{3,}$" title="Full name must contain only letters and spaces, at least 3 characters" required>
+            
+                <!-- Username (Only letters and numbers, 5-12 characters) -->
+                <input class="bg-none w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="text" placeholder="Username" name="username" 
+                    pattern="^[a-zA-Z0-9]{5,12}$" title="Username must be 5-12 characters long and contain only letters and numbers" required>
+            
+                <!-- Email (Valid email format) -->
+                <input class="bg-none w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="email" placeholder="Email" name="email" 
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Enter a valid email address" required>
+            
+                <!-- Password (Min 8 characters, at least 1 letter & 1 number) -->
+                <input class="bg-none w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="password" placeholder="Password" name="password" 
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" 
+                    title="Password must be at least 6 characters long and include at least one letter and one number" required>
+            
+                <!-- Submit Button -->
+                <input class="cursor-pointer bg-blue-500 w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="submit" value="Create Account">
+            
+                <!-- Login Link -->
+                <p class="mt-5">Already have an account? <a class="text-blue-500" href="/login">Login</a></p>
+            
+            </form>
+            
+        </div>
+
+    </div>
+</body>
+</html>

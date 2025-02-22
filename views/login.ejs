@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="flex justify-center bg-zinc-900 min-h-screen w-full p-10">
+
+        <div class="form-container flex flex-col py-10 px-6 border-[1px] border-zinc-500 rounded-md text-white max-w-lg items-center h-fit">
+
+            <h1 class="block font-bold uppercase mb-10 text-2xl">Login Now</h1>
+
+            <form class="flex text-sm flex-col items-center" action="/login" method="post">
+            
+                <!-- Email (Valid email format) -->
+                <input class="bg-none w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="email" placeholder="admin@gmail.com" name="email" 
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Enter a valid email address" required>
+            
+                <!-- Password (Min 8 characters, at least 1 letter & 1 number) -->
+                <input class="bg-none w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="password" placeholder="admin1234" name="password" 
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" 
+                    title="Password must be at least 6 characters long and include at least one letter and one number" required>
+            
+                <!-- Submit Button -->
+                <input class="cursor-pointer bg-green-500 w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
+                    type="submit" value="Login">
+            
+                <!-- Login Link -->
+                <p class="mt-5">Already have an account? <a class="text-blue-500" href="/register">SignUp</a></p>
+            
+            </form>
+            
+        </div>
+
+    </div>
+</body>
+</html>
