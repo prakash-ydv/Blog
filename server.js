@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const userModel = require('./models/userModel');
+const postModel = require('./models/postModel');
 require('dotenv').config();
 
 
