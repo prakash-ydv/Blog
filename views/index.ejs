@@ -29,7 +29,7 @@
 
             <form class="flex flex-col items-end" method="post" action="/addpost">
 
-                <textarea class="w-full h-48 p-2 text-sm md:text-base  resize-none rounded-md outline-none" name="content" placeholder="Write Something..." maxlength="200" minlength="3"></textarea>
+                <textarea class="w-full h-48 p-2 text-sm md:text-base  resize-none rounded-md outline-none" name="content" placeholder="Write Something..." maxlength="200" minlength="3" required></textarea>
 
                 <input class="mx-2 bg-blue-500 px-4 py-1 rounded-md" type="submit" value="Post">
             </form>
@@ -51,8 +51,8 @@
                     <p class="text-white text-zinc-300 md:text-base"> <%= post.content %></p>
     
                     <div id="actions" class="flex text-white font-mono text-sm mt-5 gap-8 ">
-                        <span class="cursor-pointer text-blue- "><%= post.likes.length %> Like</span>
-                        <span class="cursor-pointer text-red-">0 DisLike</span>
+                        <span class="cursor-pointer text-blue- "><%= post.likes.length %> <a href="/like/<%=post._id%>">Like</a></span>
+                        <span class="cursor-pointer text-blue- "><%= post.dislikes.length %> <a href="/dislike/<%=post._id%>">Dislike</a></span>
                     </div>
     
                 </div>

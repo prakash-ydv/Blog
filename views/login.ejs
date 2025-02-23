@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body>
@@ -20,18 +20,15 @@
                     type="email" placeholder="admin@gmail.com" name="email" 
                     pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Enter a valid email address" required>
             
-                <!-- Password (Min 8 characters, at least 1 letter & 1 number) -->
                 <input class="bg-none w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
-                    type="password" placeholder="admin1234" name="password" 
-                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" 
-                    title="Password must be at least 6 characters long and include at least one letter and one number" required>
+                    type="password" placeholder="admin1234" name="password" required>
             
                 <!-- Submit Button -->
                 <input class="cursor-pointer bg-green-500 w-58 outline-none m-2 border-[1px] rounded-md p-1 border-zinc-500" 
                     type="submit" value="Login">
             
                 <!-- Login Link -->
-                <p class="mt-5">Already have an account? <a class="text-blue-500" href="/register">SignUp</a></p>
+                <p class="mt-5">Don't have an account? <a class="text-blue-500" href="/register">Register</a></p>
             
             </form>
             

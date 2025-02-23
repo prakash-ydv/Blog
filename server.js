@@ -105,7 +105,10 @@ app.post('/login', async(req, res) => {
         return res.send('Invalid username or password');
       }
     })
+  }else{
+    res.redirect('/login')
   }
+
 });
 
 app.get('/logout', (req, res) => {
@@ -148,7 +151,6 @@ app.get('/profile', isLogedIn, async(req,res) => {
   if(user){
     
     const post = user.posts;
-    console.log(post)
   
     return res.render('profile', {user})
   }else{
@@ -156,5 +158,29 @@ app.get('/profile', isLogedIn, async(req,res) => {
   }
 })
 
+app.get('/like/:postid', isLogedIn, async(req,res) => {
+  const userId = req.user.id;
+  const postId = req.params.postid;
 
-app.listen(3000);
+  const post = await postModel.findById(postId);
+  // Check if the user has already liked the post
+
+  if(post.likes.includes(userId)){
+
+     // User has already liked the post, so remove the like
+     await postModel.updateOne({ _id: postId }, { $pull: { likes: userId } });
+     await userModel.updateOne({ _id: userId }, { $pull: { likedPosts: postId } });
+  } else {
+
+    await postModel.updateOne({_id: postId}, {$push: {likes: userId}});
+    await userModel.updateOne({_id: userId}, {$push: {likedPosts: postId}});
+
+  }
+  
+
+
+  return res.redirect('/')
+})
+
+
+app.listen(3001);
